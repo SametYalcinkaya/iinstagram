@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Şifre Sıfırlama Sistemi</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+            max-width: 935px;
+            margin: 0 auto;
+        }
+
+        .logo-text {
+            font-family: 'Pacifico', 'Dancing Script', 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, cursive;
+            font-size: 26px;
+            font-weight: 400;
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .login-btn, .signup-btn {
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .signup-btn {
+            background-color: #0095f6;
+            border-radius: 4px;
+            padding: 8px 16px;
+        }
+
+        .container {
+            max-width: 935px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+        }
+
+        .login-box {
+            max-width: 350px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .logo {
+            margin: 22px auto 12px;
+        }
+
+        .logo img {
+            width: 175px;
+            height: auto;
+        }
+
+        .form-container {
+            background-color: #000;
+            border: 1px solid #363636;
+            border-radius: 3px;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+
+        .form-container h1 {
+            margin: 0 0 10px;
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .description {
+            color: #a8a8a8;
+            font-size: 14px;
+            line-height: 18px;
+            margin: 0 0 20px;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #0095f6;
+            border: 1px solid #0095f6;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 5px 9px;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 8px;
+            text-decoration: none;
+            display: inline-block;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0081d6;
+            border-color: #0081d6;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 18px 0;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #363636;
+        }
+
+        .divider::before {
+            margin-right: 16px;
+        }
+
+        .divider::after {
+            margin-left: 16px;
+        }
+
+        .feature-list {
+            text-align: left;
+            margin: 20px 0;
+            padding: 0 10px;
+        }
+
+        .feature-list h3 {
+            color: #fff;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .feature-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            margin-bottom: 8px;
+            color: #a8a8a8;
+            font-size: 14px;
+        }
+
+        .feature-list li:before {
+            content: "• ";
+            color: #0095f6;
+            font-weight: bold;
+        }
+
+        .get-app {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .get-app p {
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .app-stores {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .app-store {
+            height: 40px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #a8a8a8;
+            font-size: 12px;
+            width: 100%;
+            padding: 20px 0;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .footer-links a {
+            color: #a8a8a8;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .copyright {
+            margin-top: 15px;
+        }
+
+        @media (max-width: 450px) {
+            .form-container {
+                border: none;
+                background-color: transparent;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            body {
+                padding: 0;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-text">Instagram</div>
+        <div class="auth-buttons">
+            <a href="https://www.instagram.com/accounts/login/?hl=tr" class="login-btn">Giriş Yap</a>
+            <a href="https://www.instagram.com/accounts/emailsignup/?hl=tr" class="signup-btn">Kaydol</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="login-box">
+            <div class="logo">
+                <img src="logo.png" alt="Instagram">
+            </div>
+            
+            <div class="form-container">
+                <h1>Şifre Sıfırlama Sistemi</h1>
+                <p class="description">Instagram şifre sıfırlama işlevselliğinin tamamını içeren demo uygulaması.</p>
+                
+                <div class="feature-list">
+                    <h3>Özellikler</h3>
+                    <ul>
+                        <li>Instagram benzeri kullanıcı arayüzü</li>
+                        <li>Şifre sıfırlama istek formu</li>
+                        <li>Şifre değiştirme sayfası</li>
+                        <li>Başarı onay sayfası</li>
+                        <li>E-posta bildirimleri (EmailJS)</li>
+                        <li>Mobil ve masaüstü uyumlu tasarım</li>
+                    </ul>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <a href="sifre_yenile.html" class="btn-primary">Şifre Sıfırlama Sayfası</a>
+                <a href="sifre_degistir.html" class="btn-primary">Şifre Değiştirme Sayfası</a>
+                <a href="basarili.html" class="btn-primary">Başarı Sayfası</a>
+            </div>
+            
+            <div class="get-app">
+                <p>Uygulamayı indir</p>
+                <div class="app-stores">
+                    <img src="https://static.cdninstagram.com/rsrc.php/v3/yz/r/c5Rp7Ym-Klz.png" alt="App Store" class="app-store">
+                    <img src="https://static.cdninstagram.com/rsrc.php/v3/yu/r/EHY6QnZYdNX.png" alt="Google Play" class="app-store">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="footer-links">
+            <a href="#">Meta</a>
+            <a href="#">Hakkında</a>
+            <a href="#">Blog</a>
+            <a href="#">İş Fırsatları</a>
+            <a href="#">Yardım</a>
+            <a href="#">API</a>
+            <a href="#">Gizlilik</a>
+            <a href="#">Koşullar</a>
+            <a href="#">Konumlar</a>
+            <a href="#">Instagram Lite</a>
+            <a href="#">Meta AI</a>
+            <a href="#">Meta AI Makaleleri</a>
+            <a href="#">Threads</a>
+            <a href="#">Kişi Yükleme ve Hesabı Olmayan Kişiler</a>
+            <a href="#">Meta Verified</a>
+        </div>
+        <div class="copyright">
+            © 2025 Instagram from Meta
+        </div>
+        <div style="margin-top: 10px; font-size: 12px; color: #a8a8a8;">
+            <p>Türkçe</p>
+        </div>
+        
+    </div>
+</body>
+</html>
